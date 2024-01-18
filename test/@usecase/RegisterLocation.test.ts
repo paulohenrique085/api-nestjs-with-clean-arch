@@ -1,5 +1,5 @@
 
-import { LocationInMemoryRepository } from "src/@core/infra/repository/inMemory/LocationInMemoryRepository"
+import { LocationInMemoryRepository } from "src/@core/infra/db/LocationInMemoryRepository"
 import { RegisterLocation } from "src/@core/application/@usecases/RegisterLocation"
 
 
