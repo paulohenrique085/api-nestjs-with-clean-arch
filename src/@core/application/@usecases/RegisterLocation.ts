@@ -1,9 +1,9 @@
 
 import { Location } from "src/@core/domain/entity/Location";
-import { LocationRepository } from "../repository/LocationRepository";
+import { LocationRepositoryInterface } from "../repository/LocationRepository";
 
 export class RegisterLocation {
-    constructor(private locationRepository: LocationRepository) { }
+    constructor(private locationRepository: LocationRepositoryInterface) { }
 
     async execute(input: Input) {
         const locationCreated = Location.create(input.latitude, input.longitude)
