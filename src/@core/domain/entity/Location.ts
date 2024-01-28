@@ -1,13 +1,13 @@
-import { UUID } from "./UUID";
+import { UUID } from './UUID';
 
 export class Location {
-    constructor(
-        readonly id: string,
-        readonly latitude: string,
-        readonly longitude: string
-    ) { }
+  constructor(
+    readonly id: string,
+    readonly latitude: string,
+    readonly longitude: string,
+  ) {}
 
-    static create(latitude: string, longitude: string) {
-        return new Location(UUID.randomUUID(), latitude, longitude);
-    }
+  static create(latitude: string, longitude: string) {
+    return new Location(UUID.randomUUID(), latitude, longitude);
+  }
 }

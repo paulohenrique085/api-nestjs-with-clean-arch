@@ -1,8 +1,7 @@
-import crypto from 'crypto'
+import crypto from 'crypto';
 
 export class UUID {
-    static randomUUID(): string {
-        return crypto.randomUUID()
-    }
+  static randomUUID(): string {
+    return crypto.randomUUID();
+  }
 }
-
