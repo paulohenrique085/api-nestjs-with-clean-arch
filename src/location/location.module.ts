@@ -11,19 +11,20 @@ import { GetAllLocations } from 'src/@core/application/@usecases/GetAllLocations
   providers: [
     LocationService,
 
-    //configurando
+    //configurando dessa forma pois esssa classe nao recebe nenhum parametro no construtor
     {
       provide: LocationInMemoryRepository,
       useClass: LocationInMemoryRepository,
     },
-
     /*nesse caso, utilizamos o useFactory pois como o caso de uso de registro precisa de um parametro no construtor, eu preciso
     utilizar artificio para injetar(ensinar) isso no nest*/
     {
       provide: RegisterLocation,
+      //utiliza-se o useFactory pois estamos ensinando o nest a usar algo.
       useFactory: (locationRepository: LocationRepositoryInterface) => {
         return new RegisterLocation(locationRepository);
       },
+      //repositorio em si que vai ser utilizado como DB
       inject: [LocationInMemoryRepository],
     },
     {
