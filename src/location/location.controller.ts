@@ -3,7 +3,7 @@ import { CreateLocationDto } from './dto/create-location.dto';
 import { RegisterLocation } from 'src/@core/application/@usecases/RegisterLocation';
 import { GetAllLocations } from 'src/@core/application/@usecases/GetAllLocations';
 
-@Controller('location')
+@Controller('api/location')
 export class LocationController {
   constructor(
     private registerLocation: RegisterLocation,
