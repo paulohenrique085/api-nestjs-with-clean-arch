@@ -1,7 +1,8 @@
+import { LocationRepositoryInterface } from 'src/@core/application/repository/LocationRepository';
 import { Location } from 'src/@core/domain/entity/Location';
 
-export class LocationInMemoryRepository {
-  constructor(private locations: { [id: string]: Location } = {}) {}
+export class LocationInMemoryRepository implements LocationRepositoryInterface {
+  locations: Location[] = [];
 
   async save(location: Location): Promise<void> {
     this.locations[location.id] = location;
