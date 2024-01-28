@@ -8,12 +8,13 @@ import { GetAllLocations } from 'src/@core/application/@usecases/GetAllLocations
 
 @Module({
   controllers: [LocationController],
-  providers: [LocationService,
+  providers: [
+    LocationService,
 
-    //configurando 
+    //configurando
     {
       provide: LocationInMemoryRepository,
-      useClass: LocationInMemoryRepository
+      useClass: LocationInMemoryRepository,
     },
 
     /*nesse caso, utilizamos o useFactory pois como o caso de uso de registro precisa de um parametro no construtor, eu preciso
@@ -21,18 +22,17 @@ import { GetAllLocations } from 'src/@core/application/@usecases/GetAllLocations
     {
       provide: RegisterLocation,
       useFactory: (locationRepository: LocationRepositoryInterface) => {
-        return new RegisterLocation(locationRepository)
+        return new RegisterLocation(locationRepository);
       },
-      inject: [LocationInMemoryRepository]
+      inject: [LocationInMemoryRepository],
     },
     {
       provide: GetAllLocations,
       useFactory: (locationRepository: LocationRepositoryInterface) => {
-        return new GetAllLocations(locationRepository)
+        return new GetAllLocations(locationRepository);
       },
-      inject: [LocationInMemoryRepository]
-    }
-
-  ]
+      inject: [LocationInMemoryRepository],
+    },
+  ],
 })
-export class LocationModule { }
+export class LocationModule {}

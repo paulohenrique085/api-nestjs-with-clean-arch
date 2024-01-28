@@ -1,14 +1,11 @@
-
-
-import { LocationRepositoryInterface } from "../repository/LocationRepository";
+import { LocationRepositoryInterface } from '../repository/LocationRepository';
 
 export class GetAllLocations {
-    constructor(private locationRepository: LocationRepositoryInterface) { }
+  constructor(private locationRepository: LocationRepositoryInterface) {}
 
-    async execute(): Promise<Output> {
-        return this.locationRepository.findAll()
-
-    }
+  async execute(): Promise<Output> {
+    return this.locationRepository.findAll();
+  }
 }
 
-type Output = { latitude: string, longitude: string }[]
+type Output = { latitude: string; longitude: string }[];
