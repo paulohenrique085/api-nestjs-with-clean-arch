@@ -2,7 +2,7 @@ import { UUID } from './UUID';
 
 export class Location {
   constructor(
-    readonly id: string,
+    readonly uuid: string,
     readonly latitude: string,
     readonly longitude: string,
   ) {}

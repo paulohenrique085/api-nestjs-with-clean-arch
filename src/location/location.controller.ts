@@ -1,37 +1,22 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { CreateLocationDto } from './dto/create-location.dto';
-import { RegisterLocation } from 'src/@core/application/@usecases/RegisterLocation';
-import { GetAllLocations } from 'src/@core/application/@usecases/GetAllLocations';
+import { CreateLocationUseCase } from 'src/@core/application/@usecases/create-location.usecase';
+import { GetAllLocationsUseCase } from 'src/@core/application/@usecases/get-all-locations.usecase';
 
 @Controller('api/location')
 export class LocationController {
   constructor(
-    private registerLocation: RegisterLocation,
-    private getAllLocations: GetAllLocations,
+    private createLocationUseCase: CreateLocationUseCase,
+    private getAllLocationsUseCase: GetAllLocationsUseCase,
   ) {}
 
-  @Post('/register')
+  @Post('/create')
   create(@Body() createLocationDto: CreateLocationDto) {
-    return this.registerLocation.execute(createLocationDto);
+    return this.createLocationUseCase.execute(createLocationDto);
   }
 
   @Get('/locations')
   findAll() {
-    return this.getAllLocations.execute();
+    return this.getAllLocationsUseCase.execute();
   }
-
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.locationService.findOne(+id);
-  // }
-
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateLocationDto: UpdateLocationDto) {
-  //   return this.locationService.update(+id, updateLocationDto);
-  // }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.locationService.remove(+id);
-  // }
 }
