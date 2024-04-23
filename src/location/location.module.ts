@@ -13,12 +13,13 @@ const { HOST, USERNAME, PASSWORD, DATABASE_NAME } = process.env;
 const teste = new LocationRepository(
   new MysqlAdapter(HOST, USERNAME, PASSWORD, DATABASE_NAME),
 );
+
 @Module({
   controllers: [LocationController],
   providers: [
     {
       provide: LocationRepository,
-      useValue: teste,
+      useFactory: () => teste,
     },
     /*nesse caso, utilizamos o useFactory pois como o caso de uso de registro precisa de um parametro no construtor, eu preciso
     utilizar artificio para injetar(ensinar) isso no nest*/
